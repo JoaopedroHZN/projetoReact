@@ -1,7 +1,17 @@
-import './App.css'; // Mantém a importação do CSS padrão do Vite (opcional)
+// src/App.jsx
+import { useState } from 'react'; // 1. Importamos o Hook de estado
+import './App.css';
+import ItemCardapio from './ItemCardapio';
 
 function App() {
-  // 1. Criamos a nossa "base de dados" local com os itens do cardápio
+  // 2. Criamos o estado. 'totalPedido' é o valor, 'setTotalPedido' é a função para mudar esse valor.
+  const [totalPedido, setTotalPedido] = useState(0);
+
+  // 3. Função que será disparada ao clicar no botão
+  const incrementarPedido = () => {
+    setTotalPedido(totalPedido + 1);
+  };
+
   const itensCardapio = [
     { id: 1, nome: 'X-Burger', preco: 15.00 },
     { id: 2, nome: 'X-Salada', preco: 18.50 },
@@ -11,20 +21,24 @@ function App() {
   ];
 
   return (
-    // No React, a gente sempre precisa retornar tudo dentro de uma "caixa" (como essa div principal)
     <div className="cardapio-container">
-      <h1>Cardápio da Lanchonete 🍔</h1>
+      {/* 4. Exibimos o total aqui no topo */}
+      <div className="header-pedido">
+        <h1>Cardápio 🍔</h1>
+        <div className="contador-flutuante">
+          🛒 Itens no Pedido: <strong>{totalPedido}</strong>
+        </div>
+      </div>
       
       <ul>
-        {/* 2. O .map() vai varrer o nosso array e criar um <li> para cada item */}
         {itensCardapio.map((item) => (
-          // O React EXIGE que cada item de uma lista tenha um "key" único para ele não se perder
-          <li key={item.id}>
-            <strong>{item.nome}</strong> 
-            <br />
-            {/* O toFixed(2) garante que o preço sempre tenha duas casas decimais (ex: 15.00) */}
-            <span>R$ {item.preco.toFixed(2)}</span>
-          </li>
+          <ItemCardapio 
+            key={item.id} 
+            nome={item.nome} 
+            preco={item.preco} 
+            // 5. Passamos a função de incrementar como uma Prop
+            aoAdicionar={incrementarPedido}
+          />
         ))}
       </ul>
     </div>

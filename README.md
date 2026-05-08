@@ -1,16 +1,7 @@
-# React + Vite
+1- Tem as tabelas, os li, divs, ids, nome e preco para cada item
+2- com varios itens a pagina vai descendo podendo scrolar
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+3- O codigo ficou menor
+4- apenas em um lugar no App.css no nome da variavel .cardapio-container
+5- atraves da importacao e exportacao do App.jsx e o ItemCardapio
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.

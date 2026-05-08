@@ -1,71 +1,110 @@
-/* Substitua aquele bloco do 'body' inteiro por este aqui: */
+/* 1. Fundo da tela inteira com um degradê muito suave */
 #root {
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  width: 100vw; /* Garante que vai pegar a largura toda da tela */
-  background-color: #f4f6f8; 
+  width: 100vw;
+  background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* 2. O "Cartão" do Cardápio */
+/* 2. O Cartão Principal do Cardápio */
 .cardapio-container {
   background-color: #ffffff;
-  width: 350px;
-  padding: 30px;
-  border-radius: 16px; /* Bordas arredondadas */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Sombra elegante */
+  width: 400px;
+  padding: 40px;
+  border-radius: 24px; /* Bordas bem arredondadas, estilo app moderno */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08); /* Sombra suave para destacar */
+  text-align: center; /* CENTRALIZA o título e o contador! */
 }
 
-/* 3. Estilo do Título */
-.cardapio-container h1 {
-  text-align: center;
-  color: #ff4757; /* Um vermelho/coral chamativo */
-  font-size: 24px;
-  margin-top: 0;
-  margin-bottom: 25px;
-  border-bottom: 2px dashed #ffeaa7; /* Linha tracejada embaixo do título */
-  padding-bottom: 15px;
+/* 3. Título e Contador */
+.header-pedido h1 {
+  color: #ff4757;
+  font-size: 28px;
+  margin: 0 0 15px 0;
 }
 
-/* 4. Limpando a lista (tirando as bolinhas padrão) */
+.contador-flutuante {
+  background-color: #2ed573;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 30px;
+  display: inline-block; /* Mantém ele do tamanho certo no centro */
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(46, 213, 115, 0.3); /* Sombrinha verde no contador */
+  margin-bottom: 35px; /* Dá um respiro antes de começar a lista */
+}
+
+/* 4. A Lista de Lanches */
 ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Dá um espaço perfeito entre um lanche e outro */
 }
 
-/* 5. Cada item do lanche */
+/* 5. Cada Lanche (Transformado num Mini-Cartão) */
 li {
   display: flex;
-  justify-content: space-between; /* Joga o Nome pra esquerda e Preço pra direita */
+  justify-content: space-between;
   align-items: center;
-  padding: 12px 8px;
-  border-bottom: 1px solid #f1f2f6; /* Linha fininha separando os lanches */
-  transition: all 0.3s ease;
+  padding: 15px 20px;
+  background-color: #f8f9fa; /* Um cinza super claro */
+  border-radius: 16px;
+  border: 1px solid #edf2f7;
+  transition: all 0.3s ease; /* Prepara para a animação do hover */
 }
 
-/* Tira a linha do último item pra ficar limpo */
-li:last-child {
-  border-bottom: none;
-}
-
-/* Efeito bacana quando passa o mouse por cima do lanche */
+/* Efeito de pular pra cima quando passa o mouse */
 li:hover {
-  background-color: #fcfafa;
-  transform: scale(1.02); /* Dá uma leve "crescida" no item */
-  border-radius: 8px;
+  transform: translateY(-4px); 
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+  border-color: #ff4757; /* Borda fica vermelha pra destacar */
 }
 
-/* 6. Textos do Lanche e Preço */
-li strong {
+/* 6. Textos do Lanche */
+.item-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Alinha o Nome e Preço à esquerda do cartãozinho */
+  gap: 6px;
+}
+
+.item-info strong {
   color: #2f3542;
-  font-size: 17px;
+  font-size: 18px;
 }
 
-li span {
-  color: #2ed573; /* Verde para o dinheiro */
+.item-info span {
+  color: #747d8c; /* Cor mais discreta pro preço */
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* 7. O Botão Bonitão */
+.btn-adicionar {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 12px;
+  cursor: pointer;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.btn-adicionar:hover {
+  background-color: #ff6b81;
+  transform: scale(1.05); /* Dá uma leve crescida */
+}
+
+.btn-adicionar:active {
+  transform: scale(0.95); /* Efeito de clique afundando */
 }
